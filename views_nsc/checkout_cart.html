@@ -1,0 +1,69 @@
+<h3> Here is your order summary:</h3>
+<p align="right"><img src="/images_nsc/checkout_indicator1.png" alt="checkout indicator" /></p>
+
+<table border="0" cellspacing="8" cellpadding="6" id="shopping_cart_content">
+<tr>
+<th align="center">Item</th>
+<th align="center">Quantity</th>
+<th align="right">Price</th>
+<th align="right">Subtotal</th>
+</tr>
+<?php
+include('./includes_nsc/product_functions.inc.php');
+$total=0;
+$remove=array();
+
+while($row=mysqli_fetch_array($r, MYSQLI_ASSOC)){
+	if($row['stock']<$row['quantity']){
+	echo '<tr class="error"><td colspan="4" align="center">
+	There are only '.$row['stock'].' left in stock of the '.$row['name'].'. 
+	This itenm has been removed from your cart and placed in your wish list.</td></tr>';	
+	$remove[$row['sku']]=$row['quantity'];
+	}else{
+		$price=get_just_price($row['price'], $row['sale_price']);
+		$subtotal=$price*$row['quantity'];
+		echo '<tr><td>'.$row['category'].'::'.$row['name'].'</td>
+		<td align="center">'.$row['quantity'].'</td>
+		<td align="right">$'.$price.'</td>
+		<td align="right">$'.number_format($subtotal,2).'</td>
+		</tr>';
+		$total += $subtotal;
+	}
+}//end of while loop
+
+$shipping=get_shipping($total);
+$total += $shipping;
+echo '<tr>
+<td colspan="2"></td>
+<td align="right">Shipping&amp;Handling</td>
+
+<td align="right">$'.$shipping.'</td>
+</tr>';
+
+$_SESSION['shipping']=$shipping;
+echo '<tr>
+<td colspan="2"> </td>
+<td align="right">Total</td>
+<td align="right">$'.number_format($total,2).'</td>
+
+</tr>';
+
+if(!empty($remove)){
+	mysqli_next_result($dbc);
+	foreach($remove as $sku => $qty){
+		list($sp_type, $pid)=parse_sku($sku);
+		$r=mysqli_multi_query($dbc, "CALL add_to_wish_list('$uid', '$sp_type',$pid, $qty); 
+		CALL remove_from_cart('$uid', '$sp_type', $pid)");
+        echo "CALL add_to_wish_list('$uid', '$sp_type', $pid, $qty);CALL remove_from_cart('$uid', '$sp_type', $pid)";
+	}
+}
+
+?>
+</table>
+
+
+
+
+
+
+

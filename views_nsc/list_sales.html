@@ -1,0 +1,22 @@
+
+</div><!--end of lefnav-->
+	<div id="main_content">
+   
+    <?php 
+include ('./includes_nsc/product_functions.inc.php');
+?>
+			<h3>Current Sale Items</h3>
+				<?php
+                while ($row=mysqli_fetch_array($r, MYSQLI_ASSOC)){
+                 echo '<div class="product_category_container">';
+    echo '<div class="product_category_container_inner">';
+                echo '<h3 id="'.$row['sku'].'">'.$row['name'].'</h3>
+           
+                <p><img alt="'.$row['name'].'" src="/images_products_nsc/'.$row['image'].'" width="160" height="120" />'.'<br />'.
+                get_price('goodies', $row['price'],$row['sale_price']).'
+                <strong>Availability:</strong>'.get_stock_status($row['stock']).'</p>
+                <p><a href="/cart.php?sku='.$row['sku'].'&action=add"
+                class="button">Add to Cart</a></p></div></div>';
+                
+                }?>
+  

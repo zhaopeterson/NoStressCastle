@@ -1,0 +1,17 @@
+
+<h4>Here are the reviews</h4>
+<?php
+while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC)) { // Fetch each item.
+	
+	// Print the item within some HTML:
+   echo '<div class="review_container">';
+	echo '<p>' . $row['category_id'] . ' </p>';
+    echo '<p>'.$row['review'].  '</p>';
+    echo'</div>';
+                
+}?>
+</div><!--end of review container-->
+	
+</div><!--end of product detail info container-->
+</div><!--end of cake description container-->
+

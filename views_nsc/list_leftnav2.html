@@ -1,0 +1,24 @@
+<?php // This page is included by shop.php.
+// This page displays the leftnav.
+// This page will make use of the query result $r.
+// The query returns an array of: id, category, description, and image.
+?>
+<ul>
+<?php
+
+
+
+
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) { // Fetch each item.
+	
+	// Print the item within some HTML:
+   
+	echo '<li><a href="/browse/' . $type . '/' . urlencode($row['category']) . '/' . $row['id'] . '" class="h4">' . $row['category'] . '</a> </li>';
+                
+}?>
+              
+</ul>
+<p>&#160;</p>
+<div id="demostore_notice">
+<h3 >This is a Demo store, no orders will be honored or fulfilled</h3>
+</div>

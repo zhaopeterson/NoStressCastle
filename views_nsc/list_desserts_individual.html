@@ -1,0 +1,22 @@
+
+	
+
+
+// To allow the user to select a quantity:
+// Recommended alteration!
+<form action="/cart.php" method="get"><input type="hidden" name="action" value="add" /><input type="hidden" name="sku" value="' . $row['sku'] . '" />
+	<h3>' . $row['name'] . '</h3>
+	  	
+	     	<img alt="' . $row['name'] . '" src="/images_products_nsc/' . $row['image']  . '" width="160" height="120" />
+            <p>' . $row['description'] . '</p>
+            <p>'. get_price($type, $row['price'], $row['sale_price']) . 
+			'</p><p class="product_availability"><strong>Availability:</strong> ' . get_stock_status($row['stock']) . '</p>
+            <select name="qty"><option>1</option><option>2</option>
+            <option>3</option>
+            
+            </select> <input type="submit" value="Add to Cart" class="button" /></form>;
+
+ 
+      
+  
+

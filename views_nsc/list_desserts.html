@@ -1,0 +1,33 @@
+</div>
+
+		   	<div id="main_content_product_desserts">
+		              	<h2><?php echo $category; ?></h2>
+		         
+		                 	<h4><?php echo $row['g_description']; ?></h4>
+<?php
+
+// Added later in Chapter 8:
+include ('./includes_nsc/product_functions.inc.php');
+
+// Loop through the results:
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+	
+// Show each product:
+echo '<div class="dessert_product_container">';
+	
+
+
+// To allow the user to select a quantity:
+// Recommended alteration!
+echo '<form action="/product_detail.php" method="get"><input type="hidden" name="product_name" value="' . $row['name'] . '" />
+	<h3>' . $row['name'] . '</h3>
+	  	
+	     	<a href="/product_detail/'. $type . '/' . urlencode($category) . '/' . $sp_cat . '/'.urlencode($row['name']).'" >
+            <img alt="' . $row['name'] . '" src="/images_products_nsc/' . $row['image']  . '" width="160" height="120" /></a>
+          <p><a href="/product_detail/'. $type . '/' . urlencode($category) . '/' . $sp_cat . '/'.urlencode($row['name']).'" >View Detail</a></p></form>';
+          
+ 	echo '</div>';
+} // End of WHILE loop. 
+?>      
+  
+

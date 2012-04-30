@@ -1,0 +1,20 @@
+  <div id="product_promo">
+  <h2>Special Offers!!</h2>
+  <p>&#160;</p>
+            <?php // Check for sales!
+
+// If records are returned, include the view:
+if (mysqli_num_rows($r) > 0) {
+
+
+	// Fetch each item:
+	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+		echo '<p><a href="/shop/sales/#' . $row['sku'] . '" title="View This Product"><img alt="" src="/images_products_nsc/' . $row['image'] . '" width="120" height="90" class="promo_product_style" /></a></p><p class="promo_product_saleprice">Sale Price:' . $row['sale_price'] . '</p>';
+	}
+
+
+} // End of mysqli_num_rows() IF.
+?>
+   
+     </div><!--end of product promo-->
+        

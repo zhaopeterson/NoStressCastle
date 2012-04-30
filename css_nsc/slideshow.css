@@ -1,0 +1,178 @@
+#gallery_home {
+	height:410px;
+	width: 360px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 50;
+	
+}
+.button_signup {
+	position: absolute;
+	left: 720px;
+	top: 240px;
+}
+
+.gallery_text h3 {
+	font-size: 16px;
+	text-shadow:  1px 1px 1px #999;
+	height: 36px;
+	line-height: 36px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #3F8698;
+	left: 440px;
+	margin-left: 20px;
+}
+.gallery_text {
+	float: left;
+	position: absolute;
+	left: 450px;
+	top: 60px;
+	width: 480px;
+}
+
+.warning {
+	font-weight: bold;
+	color:#C00;
+	text-decoration: blink;
+	font-size: 1.2em;
+}
+.gallery_text ul {
+	margin-left: 40px;
+}
+.gallery_text ul li {
+	font-size: 16px;
+	font-weight: bold;
+	color: #418B9E;
+	line-height: 20px;
+	margin-bottom: 10px;
+	list-style-type: square;
+}
+
+#gallery_home div {
+	clear: both;
+	width:260px;
+	height:260px;
+
+}
+#gallery_home img {
+	background-color: #FFF;
+	padding: 0px;
+	margin-top: 80px;
+	margin-left: 50px;
+	height: 260px;
+	width: 260px;
+
+}
+#gallery div p {
+	font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#controls {
+	text-align: right;
+	width: 120px;
+	margin-left: 20px;
+	color: #565852;
+	position: absolute;
+	left: -270px;
+	z-index: 100;
+	top: 230px;
+	font-weight: bold;
+}
+
+#pager a {
+	font-size: 13px;
+	text-decoration: none;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	color: #FFF;
+	text-align: left;
+	line-height: 20px;
+	padding-left: 15px;
+	font-weight: normal;
+	width: 125px;
+	float: left;
+}
+
+#slide_caption {
+	height: 160px;
+	width: 290px;
+	position: absolute;
+	z-index: 60;
+	left: 2px;
+}
+#slide_caption h3 {
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #FAF9F7;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-top: 5px;
+	margin-left: 10px;
+	line-height: 20px;
+}
+#slide_caption h3 a {
+	color: #FAF9F7;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none;
+}
+#slide_caption h3 a:visited {
+	color: #FAF9F7;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none;
+}
+#slide_caption h3 a:hover {
+	color: #6C3;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none;
+}
+
+
+
+
+
+#content .control {
+	font-size: 9px;
+	text-decoration: none;
+	margin-left: 2px;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	background-repeat: no-repeat;
+}
+#prev {
+	font-size: 11px;
+	cursor: default;
+	cursor:pointer;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 20px;
+}
+#next {
+	background-image: none;
+	font-size: 11px;
+	cursor:pointer;
+}
+#pager a:hover {
+	color: #6C3;
+
+}
+#pager a.activeSlide {
+	color: #EFD40C;
+}
+#playControl {
+	font-size:11px;
+	height: 10px;
+	width: 10px;
+	color:#565852;
+	font-weight:bold;
+	cursor:pointer;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+#playControl a:hover {
+	background-position: center center;
+	font-size:9px;
+	height: 10px;
+	width: 10px;
+	color: #F90;
+}

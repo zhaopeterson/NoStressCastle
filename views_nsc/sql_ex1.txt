@@ -1,0 +1,181 @@
+--
+-- Database: `ecommerce1`
+--
+
+-- Do not run this in batch mode!
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `category` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `category` (`category`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+-- 
+-- Dumping data for table `categories`
+-- 
+
+INSERT INTO `categories` (`id`, `category`) VALUES (1, 'General Web Security'),
+(2, 'PHP Security'),
+(3, 'Common Attacks'),
+(4, 'JavaScript Security'),
+(5, 'Database Security');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED DEFAULT NULL,
+  `transaction_id` VARCHAR(19) NOT NULL,
+  `payment_status` VARCHAR(15) NOT NULL,
+  `payment_amount` DECIMAL(6,2) UNSIGNED NOT NULL,
+  `payment_date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` SMALLINT UNSIGNED NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `description` TINYTEXT NOT NULL,
+  `content` LONGTEXT NOT NULL,
+  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`),
+  KEY `creation_date` (`date_created`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` VALUES(1, 3, 'This is a Common Attack Article.', 'This is the description. This is the description. This is the description. This is the description. This is the description. This is the description. This is the description. This is the description. ', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.<br /><br />Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>\r\n\r\nLorem ipsum dolor sit amet, consectetuer adipiscing elit.\r\nAliquam tincidunt mauris eu risus.\r\nVestibulum auctor dapibus neque.\r\nNunc dignissim risus id metus.\r\nCras ornare tristique elit.\r\nVivamus vestibulum nulla nec ante.\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.<br /><br />Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>', '2010-08-04 10:16:36');
+INSERT INTO `pages` VALUES(2, 3, 'This is another Common Attack Article.', 'This is the description. This is the description. This is the description. This is the description. This is the description. This is the description. This is the description. ', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.<br /><br />Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.<br /><br />Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>', '2010-08-04 10:17:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pdfs`
+--
+
+CREATE TABLE `pdfs` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tmp_name` CHAR(40) NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `description` TINYTEXT NOT NULL,
+  `file_name` VARCHAR(40) NOT NULL,
+  `size` MEDIUMINT UNSIGNED NOT NULL,
+  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tmp_name` (`tmp_name`),
+  KEY `date_created` (`date_created`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` ENUM('member','admin') NOT NULL,
+  `username` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(80) NOT NULL,
+  `pass` VARBINARY(32) DEFAULT NULL,
+  `first_name` VARCHAR(20) NOT NULL,
+  `last_name` VARCHAR(40) NOT NULL,
+  `date_expires` DATE NOT NULL,
+  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_modified` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+--
+-- BONUS TABLES!
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE history (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+`user_id` INT UNSIGNED NOT NULL,
+`type` ENUM('page', 'pdf'),
+`page_id` MEDIUMINT UNSIGNED DEFAULT NULL,
+`pdf_id` SMALLINT UNSIGNED DEFAULT NULL,
+`date_created` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`),
+KEY (`page_id`, `type`),
+KEY (`pdf_id`, `type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notes`
+--
+
+CREATE TABLE notes (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+`user_id` INT UNSIGNED NOT NULL,
+`page_id` MEDIUMINT UNSIGNED NOT NULL,
+`note` TINYTEXT NOT NULL,
+`date_created` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`),
+UNIQUE (`user_id`, `page_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorite_pages`
+--
+
+CREATE TABLE favorite_pages (
+`user_id` INT UNSIGNED NOT NULL,
+`page_id` MEDIUMINT UNSIGNED NOT NULL,
+`date_created` TIMESTAMP  NOT NULL,
+PRIMARY KEY (`user_id`, `page_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_ratings`
+--
+
+CREATE TABLE page_ratings(
+`user_id` INT UNSIGNED NOT NULL,
+`page_id` MEDIUMINT UNSIGNED NOT NULL,
+`rating` TINYINT UNSIGNED NOT NULL,
+`date_created` TIMESTAMP  NOT NULL,
+PRIMARY KEY (`user_id`, `page_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -1,0 +1,55 @@
+<?php // This page is included by browse.php.
+// This page displays the available coffee products.
+// This page will make use of the query result $r.
+// The query returns an array of: description, image, sku, name, and stock.
+
+// Only display the header once:
+$header = false; 
+
+// Added later in Chapter 8:
+include ('./includes_nsc/product_functions.inc.php');
+
+// Loop through the results:
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+	
+	// If the header has not been shown, create it:
+	if (!$header) { ?>
+		   </div><!--end of left_nav-->
+         
+	<div id="main_content_product">
+   <div id="breadcrumb_nav"><p><a href="/index.php" >Home </a>&raquo; <a href="/shop/cake/"><?php echo ucwords($type); ?> </a>&raquo; <?php echo $category; ?></p></div>
+	<div class="cakeimage_container">
+<p><a href="/images_products_nsc_large/<?php echo $row['image']; ?>" class = "cloud-zoom" id="zoom1"
+            rel="adjustX: 20, adjustY:18, zoomWidth:360, zoomHeight:240"><img alt="<?php echo $category; ?>" src="/images_products_nsc/<?php echo $row['image']; ?>" width="240" height="180" /></a></p>
+</div>
+                            
+                            <div class="cakedesc_container">
+                            <div id="product_detail_info">
+          <ul>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#reviews">Reviews</a></li>   
+          </ul>
+          <div id="description">
+           <h4> <?php echo $category; ?></h4>
+                            <p> <?php echo $row['description']; ?></p>
+                            <p>&#160;</p>
+		<p class="product_availability">All listed products are currently available.</p>
+		<form action="/cart.php" method="get">
+        <input type="hidden" name="action" value="add" />
+        <p><select name="sku" class="sku">
+<?php // The header has now been shown:
+	$header = true;
+} // End of $header IF.
+
+	// Create each option:
+   
+	echo '<option value="' . $row['sku'] . '">' . $row['name'] .get_price($type, $row['price'], $row['sale_price']) .  '</option>';
+	
+} // End of WHILE loop. 
+?></select> </p>
+
+
+<input type="submit" value="Add to Cart" class="button" /></form>
+	
+</div>
+<div id="reviews">

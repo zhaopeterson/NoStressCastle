@@ -1,0 +1,58 @@
+<?php session_start(); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title><?php 
+	if (isset($page_title)) { 
+			echo $page_title; 
+	} else { 
+			echo 'No Stress Castle - Administration'; 
+	} 
+	?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
+<link href="/css_nsc/css_reset.css" rel="stylesheet" type="text/css" />
+<link href="/css_nsc/global_nsc.css" rel="stylesheet" type="text/css" />
+<link href="/css_nsc/superfish.css" rel="stylesheet" type="text/css" />
+<script src="/javascripts_nsc/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts_ns/jquery.hoverIntent.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts_nsc/homeslideshow_script.js"></script>
+<style type="text/css" media="screen">
+	#content { background: #fff; width:100%; padding:20px 100px 30px 0px; }
+	#header .nav li ul a { color:#ffe7be; text-decoration:none; text-transform:none; font-size: .75em; }
+</style>
+<script type="text/javascript"> 
+
+	// Enable Superfish:
+	$(function() { 
+		$('ul.sf-menu').superfish({
+			autoArrows: false,
+			speed: 'fast'
+		});
+	}); 
+ 
+</script>
+
+</head>
+<body class="admin_bkg">
+<div id="container_admin">
+<div id="header_admin">
+
+<h1>No Stress Castle</h1>
+<h2>... the adminstration panels</h2>
+</div><!--end of header-->
+<div id="topnav_admin">
+         <ul class="nav sf-menu">
+			<!-- MENU -->
+			<li class="first"><a href="#">Products</a><ul>
+				<li><a href="add_cakes.php">Add Coffee Products</a></li>
+				<li><a href="add_desserts.php">Add Non-Coffee Products</a></li>
+				<li><a href="add_inventory.php">Add Inventory</a></li>
+				</ul></li>
+			<li><a href="create_sales.php">Sales</a></li>
+			<li><a href="view_orders.php">Orders</a></li>
+			<li><a href="#">Customers</a></li>
+			<!-- END MENU -->
+         </ul>
+      </div><!--end of top nav-->
+      

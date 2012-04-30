@@ -1,0 +1,28 @@
+
+<?php
+
+// Added later in Chapter 8:
+//include ('./includes_nsc/product_functions.inc.php');
+
+// Loop through the results:
+while ($row = mysqli_fetch_array($rc2, MYSQLI_ASSOC)) {
+	
+// Show each product:
+echo '<div class="cossselling_product_container">';
+	
+
+
+// To allow the user to select a quantity:
+// Recommended alteration!
+echo '<form action="/product_detail.php" method="get"><input type="hidden" name="product_name" value="' . $row['name'] . '" />
+	<h3>' . $row['name'] . '</h3><p>&#160;</p>
+	  	
+	     	<a href="/browse/'. 'cake' . '/' . urlencode($category) . '/' . $row['id'] .'" >
+            <img alt="' . $row['name'] . '" src="/images_products_nsc/' . $row['image']  . '" width="120" height="90" /></a>
+         </form>';
+          
+ 	echo '</div>';
+} // End of WHILE loop. 
+
+?>
+</div></div></div><!--end of crossselling-->

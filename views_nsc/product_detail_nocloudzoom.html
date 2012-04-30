@@ -1,0 +1,27 @@
+</div>
+<div id="main_content_product_desserts">
+<?php
+
+	$row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+echo '<div class="dessertimage_container" >
+<img alt="' . $row['name'] . '" src="/images_products_nsc/' . $row['image']  . '" width="240" height="180" /></div>
+<div class="dessertdesc_container">';
+echo '<form action="/cart.php" method="get"><input type="hidden" name="action" value="add" /><input type="hidden" name="sku" value="' . $row['sku'] . '" />
+
+	   <div id="product_detail_info">
+          <ul>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#reviews">Reviews</a></li>   
+          </ul>
+          <div id="description">
+	     		<h4>' . $row['name'] . '</h4>
+            <p>' . $row['description'] . '</p>
+            <p>'. get_price($type, $row['price'], $row['sale_price']) . 
+			'</p><p class="product_availability"><strong>Availability:</strong>'  . get_stock_status($row['stock']) . '</p>
+            <select name="qty"><option>1</option><option>2</option>
+            <option>3</option>
+            
+            </select> <input type="submit" value="Add to Cart" class="button" /></form>';
+            ?>
+			</div>
+<div id="reviews">

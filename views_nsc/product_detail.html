@@ -1,0 +1,27 @@
+</div>
+<div id="main_content_product_desserts">
+ <div id="breadcrumb_nav"><p><a href="/index.php" >Home </a>&raquo; <a href="/shop/desserts/"><?php echo ucwords($type); ?> </a>&raquo; <a href="/browse/desserts/<?php echo $category; ?>/<?php echo $sp_cat; ?>"><?php echo $category; ?></a></p></div>
+<?php
+$row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+echo '<div class="dessertimage_container" >
+<a href="/images_products_nsc_large/' . $row['image']  . '" class = "cloud-zoom" id="zoom1"
+            rel="adjustX: 20, adjustY:18, zoomWidth:360, zoomHeight:240"><img alt="' . $row['name'] . '" src="/images_products_nsc/' . $row['image']  . '" width="240" height="180" /></a></div>
+<div class="dessertdesc_container">;
+ <div id="product_detail_info">
+          <ul>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#reviews">Reviews</a></li>   
+          </ul>
+          <div id="description">';
+          echo '<form action="/cart.php" method="get"><input type="hidden" name="action" value="add" /><input type="hidden" name="sku" value="' . $row['sku'] . '" />
+	     		<h4>' . $row['name'] . '</h4>
+            <p>' . $row['description'] . '</p>
+            <p>'. get_price($type, $row['price'], $row['sale_price']) . 
+			'</p><p class="product_availability"><strong>Availability:</strong>'  . get_stock_status($row['stock']) . '</p>
+            <select name="qty"><option>1</option><option>2</option>
+            <option>3</option>
+            
+            </select> <input type="submit" value="Add to Cart" class="button" /></form>';
+            ?>
+			</div>
+<div id="reviews">
